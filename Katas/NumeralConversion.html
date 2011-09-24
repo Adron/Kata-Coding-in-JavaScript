@@ -14,11 +14,11 @@
 
         var NumeralConverter = {
             get_arabic_numeral : function (romanNumeral) {
-                var ones = 0;
-                var five = 0;
+                var ones = 0, fives = 0, tens = 0;
                 var result = 0;
                 var vCount = romanNumeral.split(/V/g).length - 1;
                 var iCount = romanNumeral.split(/I/g).length - 1;
+                var xCount = romanNumeral.split(/X/g).length - 1;
 
                 if (romanNumeral == "IV") {
                     return 4;
@@ -27,30 +27,34 @@
                     return 9;
                 }
                 else if (vCount > 0) {
-                    five = vCount * 5;
+                    fives = vCount * 5;
+                }
+                else if (xCount > 0) {
+                    tens = xCount * 10;
                 }
 
                 ones = iCount;
-                result = five + ones;
+                result = fives + ones + tens;
 
                 return result;
             }
         }
 
-module("When converting a roman numeral into an arabic numeral");
+        module("When converting a roman numeral into an arabic numeral");
 
-test("should receive arabic numeral", function() {
-    equal(NumeralConverter.get_arabic_numeral("I"), 1, "1 when 'I' is passed in.");
-    equal(NumeralConverter.get_arabic_numeral("II"), 2, "2 when 'II' is passed in.");
-    equal(NumeralConverter.get_arabic_numeral("III"), 3, "3 when 'III' is passed in.");
-    equal(NumeralConverter.get_arabic_numeral("IV"), 4, "4 when 'IV' is passed in.");
-    equal(NumeralConverter.get_arabic_numeral("V"), 5, "5 when 'V' is passed in.");
-    equal(NumeralConverter.get_arabic_numeral("VI"), 6, "6 when 'VI' is passed in.");
-    equal(NumeralConverter.get_arabic_numeral("VII"), 7, "7 when 'VII' is passed in.");
-    equal(NumeralConverter.get_arabic_numeral("VIII"), 8, "8 when 'VIII' is passed in.");
-    equal(NumeralConverter.get_arabic_numeral("IX"), 9, "9 when 'IX' is passed in.");
-    equal(NumeralConverter.get_arabic_numeral("X"), 10, "10 when 'X' is passed in.");
-});
+        test("should receive arabic numeral", function() {
+            equal(NumeralConverter.get_arabic_numeral("I"), 1, "1 when 'I' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("II"), 2, "2 when 'II' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("III"), 3, "3 when 'III' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("IV"), 4, "4 when 'IV' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("V"), 5, "5 when 'V' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("VI"), 6, "6 when 'VI' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("VII"), 7, "7 when 'VII' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("VIII"), 8, "8 when 'VIII' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("IX"), 9, "9 when 'IX' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("X"), 10, "10 when 'X' is passed in.");
+            
+        });
     </script>
 <body>
 <h1 id="qunit-header">Numeral Conversions</h1>
