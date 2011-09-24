@@ -17,7 +17,7 @@
             return romanNumeral.length;
         }
     }
-
+    
     module("When converting a roman numeral into an arabic numeral");
 
     test("should receive 1 when passing a 'I'", function() {
@@ -31,7 +31,11 @@
     test("should receive 3 when passing a 'III'", function() {
         equal(NumeralConverter.get_arabic_numeral("III"), 3, "3 was returned when 'III' was passed as a parameter.");
     });
-        
+
+    test("should receive 4 when passing a 'IV'", function() {
+        equal(NumeralConverter.get_arabic_numeral("IV"), 4, "4 was returned when 'IV' was passed as a parameter.");
+    });
+
     </script>
 <body>
     <h1 id="qunit-header">Numeral Conversions</h1>
