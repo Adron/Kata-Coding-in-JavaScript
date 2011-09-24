@@ -12,6 +12,12 @@
             src="../QUnit/qunit.js"></script>
     <script type="text/javascript">
 
+    module("When converting a roman numeral into an arabic numeral");
+
+    test("should receive 1 when passing a 'I'", function() {
+        equal(NumeralConverter.get_arabic_numeral("I"), 1, "1 was returned when 'I' was passed as a parameter.");
+    });
+
     </script>
 <body>
     <h1 id="qunit-header">Numeral Conversions</h1>
