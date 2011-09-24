@@ -29,10 +29,8 @@
                 else if (romanNumeral == "VX") {
                     return 14;
                 }
-                else if (vCount > 0) {
+                else if (vCount > 0 || xCount > 0) {
                     fives = vCount * 5;
-                }
-                else if (xCount > 0) {
                     tens = xCount * 10;
                 }
 
