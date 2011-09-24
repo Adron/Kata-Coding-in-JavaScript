@@ -39,6 +39,10 @@
 
 module("When converting a roman numeral into an arabic numeral");
 
+test("second test within module", function() {
+  ok( true, "all pass" );
+});
+
 test("should receive 1 when passing a 'I'", function() {
     equal(NumeralConverter.get_arabic_numeral("I"), 1, "1 was returned when 'I' was passed as a parameter.");
 });
