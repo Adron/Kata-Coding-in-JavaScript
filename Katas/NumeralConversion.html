@@ -14,7 +14,8 @@
 
     var NumeralConverter = {
         get_arabic_numeral : function ( romanNumeral ){
-            return 1;
+            var result = romanNumeral == "I" ? 1 : 2;
+            return result;
         }
     }
 
