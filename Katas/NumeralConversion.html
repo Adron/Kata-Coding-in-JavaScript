@@ -14,10 +14,23 @@
 
 var NumeralConverter = {
     get_arabic_numeral : function ( romanNumeral ){
+        var ones = 0;
+        var five = 0;
+        var result = 0;
+        var vCount = romanNumeral.split(/V/g).length -1;
+        var iCount = romanNumeral.split(/I/g).length - 1;
+
         if(romanNumeral == "IV"){
             return 4;
         }
-        return romanNumeral.length;
+        else if(vCount > 0){
+            five = vCount * 5;
+        }
+
+        ones = iCount;
+        result = five + ones;
+
+        return result;
     }
 }
     
@@ -39,6 +52,25 @@ var NumeralConverter = {
         equal(NumeralConverter.get_arabic_numeral("IV"), 4, "4 was returned when 'IV' was passed as a parameter.");
     });
 
+    test("should receive 5 when passing a 'V'", function() {
+        equal(NumeralConverter.get_arabic_numeral("V"), 5, "5 was returned when 'V' was passed as a parameter.");
+    });
+
+    test("should receive 6 when passing a 'VI'", function() {
+        equal(NumeralConverter.get_arabic_numeral("VI"), 6, "6 was returned when 'VI' was passed as a parameter.");
+    });
+
+    test("should receive 7 when passing a 'VII'", function() {
+        equal(NumeralConverter.get_arabic_numeral("VII"), 7, "7 was returned when 'VII' was passed as a parameter.");
+    });
+
+    test("should receive 8 when passing a 'VIII'", function() {
+        equal(NumeralConverter.get_arabic_numeral("VIII"), 8, "8 was returned when 'VIII' was passed as a parameter.");
+    });
+
+    test("should receive 9 when passing a 'IX'", function() {
+        equal(NumeralConverter.get_arabic_numeral("IX"), 9, "9 was returned when 'IX' was passed as a parameter.");
+    });
     </script>
 <body>
     <h1 id="qunit-header">Numeral Conversions</h1>
