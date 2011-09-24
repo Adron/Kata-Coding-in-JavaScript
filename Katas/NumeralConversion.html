@@ -13,85 +13,83 @@
     <script type="text/javascript">
 
         var NumeralConverter = {
-            get_arabic_numeral : function (romanNumeral) {
-                var ones = 0, fives = 0, tens = 0;
-                var result = 0;
-                var vCount = romanNumeral.split(/V/g).length - 1;
-                var iCount = romanNumeral.split(/I/g).length - 1;
-                var xCount = romanNumeral.split(/X/g).length - 1;
+get_arabic_numeral : function (romanNumeral) {
+    var ones = 0, fives = 0, tens = 0;
+    var result = 0;
+    var vCount = romanNumeral.split(/V/g).length - 1;
+    var iCount = romanNumeral.split(/I/g).length - 1;
+    var xCount = romanNumeral.split(/X/g).length - 1;
 
 
-                if (romanNumeral == "IV") {
-                    return 4;
-                }
-                else if (romanNumeral == "IX") {
-                    return 9;
-                }
-                else if (romanNumeral == "XIV") {
-                    return 14;
-                }
-                else if (romanNumeral == "XIX") {
-                    return 19;
-                }
-                else if (romanNumeral == "XXIV") {
-                    return 24;
-                }
-                else if (romanNumeral == "XXIX") {
-                    return 29;
-                }
-                else if (vCount > 0 || xCount > 0) {
-                    fives = vCount * 5;
-                    tens = xCount * 10;
-                }
+    if (romanNumeral == "IV") {
+        return 4;
+    }
+    else if (romanNumeral == "IX") {
+        return 9;
+    }
+    else if (romanNumeral == "XIV") {
+        return 14;
+    }
+    else if (romanNumeral == "XIX") {
+        return 19;
+    }
+    else if (romanNumeral == "XXIV") {
+        return 24;
+    }
+    else if (romanNumeral == "XXIX") {
+        return 29;
+    }
+    else if (vCount > 0 || xCount > 0) {
+        fives = vCount * 5;
+        tens = xCount * 10;
+    }
 
-                ones = iCount;
-                result = fives + ones + tens;
+    ones = iCount;
+    result = fives + ones + tens;
 
-                return result;
-            }
+    return result;
+}
         }
 
         module("When converting a roman numeral into an arabic numeral");
 
         test("should receive arabic numeral", function() {
 
-equal(NumeralConverter.get_arabic_numeral("XXIX"), 29, "29 when 'XXIX' is passed in.");
-equal(NumeralConverter.get_arabic_numeral("XXVIII"), 28, "28 when 'XXVIII' is passed in.");
-equal(NumeralConverter.get_arabic_numeral("XXVII"), 27, "27 when 'XXVII' is passed in.");
-equal(NumeralConverter.get_arabic_numeral("XXVI"), 26, "26 when 'XXVI' is passed in.");
-equal(NumeralConverter.get_arabic_numeral("XXV"), 25, "25 when 'XXV' is passed in.");
-equal(NumeralConverter.get_arabic_numeral("XXIV"), 24, "24 when 'XXIV' is passed in.");
-equal(NumeralConverter.get_arabic_numeral("XXIII"), 23, "23 when 'XXIII' is passed in.");
-equal(NumeralConverter.get_arabic_numeral("XXII"), 22, "22 when 'XXII' is passed in.");
-equal(NumeralConverter.get_arabic_numeral("XXI"), 21, "21 when 'XXI' is passed in.");
-
-            equal(NumeralConverter.get_arabic_numeral("I"), 1, "1 when 'I' is passed in.");
-            equal(NumeralConverter.get_arabic_numeral("II"), 2, "2 when 'II' is passed in.");
-            equal(NumeralConverter.get_arabic_numeral("III"), 3, "3 when 'III' is passed in.");
-            equal(NumeralConverter.get_arabic_numeral("IV"), 4, "4 when 'IV' is passed in.");
-            equal(NumeralConverter.get_arabic_numeral("V"), 5, "5 when 'V' is passed in.");
-            equal(NumeralConverter.get_arabic_numeral("VI"), 6, "6 when 'VI' is passed in.");
-            equal(NumeralConverter.get_arabic_numeral("VII"), 7, "7 when 'VII' is passed in.");
-            equal(NumeralConverter.get_arabic_numeral("VIII"), 8, "8 when 'VIII' is passed in.");
-            equal(NumeralConverter.get_arabic_numeral("IX"), 9, "9 when 'IX' is passed in.");
-            equal(NumeralConverter.get_arabic_numeral("X"), 10, "10 when 'X' is passed in.");
-            equal(NumeralConverter.get_arabic_numeral("XI"), 11, "11 when 'XI' is passed in.");
-            equal(NumeralConverter.get_arabic_numeral("XII"), 12, "12 when 'XII' is passed in.");
-            equal(NumeralConverter.get_arabic_numeral("XIII"), 13, "13 when 'XIII' is passed in.");
-            equal(NumeralConverter.get_arabic_numeral("XIV"), 14, "14 when 'XIV' is passed in.");
-            equal(NumeralConverter.get_arabic_numeral("XV"), 15, "15 when 'XV' is passed in.");
-            equal(NumeralConverter.get_arabic_numeral("XVI"), 16, "16 when 'XVI' is passed in.");
-            equal(NumeralConverter.get_arabic_numeral("XVII"), 17, "17 when 'XVII' is passed in.");
-            equal(NumeralConverter.get_arabic_numeral("XVIII"), 18, "18 when 'XVIII' is passed in.");
-            equal(NumeralConverter.get_arabic_numeral("XIX"), 19, "19 when 'XIX' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("XXX"), 30, "30 when 'XXX' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("XXIX"), 29, "29 when 'XXIX' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("XXVIII"), 28, "28 when 'XXVIII' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("XXVII"), 27, "27 when 'XXVII' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("XXVI"), 26, "26 when 'XXVI' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("XXV"), 25, "25 when 'XXV' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("XXIV"), 24, "24 when 'XXIV' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("XXIII"), 23, "23 when 'XXIII' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("XXII"), 22, "22 when 'XXII' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("XXI"), 21, "21 when 'XXI' is passed in.");
             equal(NumeralConverter.get_arabic_numeral("XX"), 20, "20 when 'XX' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("XIX"), 19, "19 when 'XIX' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("XVIII"), 18, "18 when 'XVIII' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("XVII"), 17, "17 when 'XVII' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("XVI"), 16, "16 when 'XVI' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("XV"), 15, "15 when 'XV' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("XIV"), 14, "14 when 'XIV' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("XIII"), 13, "13 when 'XIII' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("XII"), 12, "12 when 'XII' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("XI"), 11, "11 when 'XI' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("X"), 10, "10 when 'X' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("IX"), 9, "9 when 'IX' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("VIII"), 8, "8 when 'VIII' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("VII"), 7, "7 when 'VII' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("VI"), 6, "6 when 'VI' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("V"), 5, "5 when 'V' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("IV"), 4, "4 when 'IV' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("III"), 3, "3 when 'III' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("II"), 2, "2 when 'II' is passed in.");
+            equal(NumeralConverter.get_arabic_numeral("I"), 1, "1 when 'I' is passed in.");
         });
     </script>
 <body>
 <h1 id="qunit-header">Numeral Conversions</h1>
-
 <h2 id="qunit-banner"></h2>
-
 <div id="qunit-testrunner-toolbar"></div>
 <h2 id="qunit-userAgent"></h2>
 <ol id="qunit-tests"></ol>
