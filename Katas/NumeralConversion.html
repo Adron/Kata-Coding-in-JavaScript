@@ -24,6 +24,10 @@
         equal(NumeralConverter.get_arabic_numeral("I"), 1, "1 was returned when 'I' was passed as a parameter.");
     });
 
+    test("should receive 2 when passing a 'II'", function() {
+        equal(NumeralConverter.get_arabic_numeral("II"), 2, "2 was returned when 'II' was passed as a parameter.");
+    });
+
     </script>
 <body>
     <h1 id="qunit-header">Numeral Conversions</h1>
