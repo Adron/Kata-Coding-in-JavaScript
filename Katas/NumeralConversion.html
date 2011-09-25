@@ -20,13 +20,15 @@
                 var iCount = romanNumeral.split(/I/g).length - 1;
                 var xCount = romanNumeral.split(/X/g).length - 1;
 
-                if (romanNumeral.length > 1) {
+                if (vCount > 0 || xCount > 0) {
+                    fives = vCount * 5;
+                    tens = xCount * 10;
+                }
 
-                    if (romanNumeral == "IV") {
-                        return 4;
-                    }
-                    else if (romanNumeral == "IX") {
-                        return 9;
+                if (romanNumeral.length > 1) {
+                    if (romanNumeral == "IV" || romanNumeral == "IX") {
+                        var workingNumber = fives + tens - iCount;
+                        return workingNumber;
                     }
                     else if (romanNumeral == "XIV") {
                         return 14;
@@ -40,11 +42,6 @@
                     else if (romanNumeral == "XXIX") {
                         return 29;
                     }
-                }
-
-                if (vCount > 0 || xCount > 0) {
-                    fives = vCount * 5;
-                    tens = xCount * 10;
                 }
 
                 ones = iCount;
