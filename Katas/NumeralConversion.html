@@ -17,43 +17,47 @@
     <script type="text/javascript">
 
         var NumeralConverter = {
-get_arabic_numeral : function (romanNumeral) {
-    var ones = 0, fives = 0, tens = 0;
-    var result = 0;
-    var vCount = romanNumeral.split(/V/g).length - 1;
-    var iCount = romanNumeral.split(/I/g).length - 1;
-    var xCount = romanNumeral.split(/X/g).length - 1;
+            get_arabic_numeral : function (romanNumeral) {
+                var ones = 0, fives = 0, tens = 0, fifties = 0;
+                var hundreds = 0, fiveHundreds = 0, thousands = 0;
+                var result = 0;
+                var vCount = romanNumeral.split(/V/g).length - 1;
+                var iCount = romanNumeral.split(/I/g).length - 1;
+                var xCount = romanNumeral.split(/X/g).length - 1;
+                var lCount = romanNumeral.split(/L/g).length - 1;
+                var cCount = romanNumeral.split(/C/g).length - 1;
+                var dCount = romanNumeral.split(/D/g).length - 1;
+                var mCount = romanNumeral.split(/M/g).length - 1;
 
-    if (vCount > 0 || xCount > 0) {
-        fives = vCount * 5;
-        tens = xCount * 10;
-    }
+                if (vCount > 0 || xCount > 0 || lCount > 0 || cCount > 0 || dCount > 0 || mCount > 0) {
+                    fives = vCount * 5;
+                    tens = xCount * 10;
+                    fifties = lCount * 50;
+                    hundreds = cCount * 100;
+                    fiveHundreds = dCount * 500;
+                    thousands = mCount * 1000;
+                }
 
-    if (romanNumeral.length > 1) {
-        if (_(romanNumeral).endsWith("IV") || _(romanNumeral).endsWith("IX")) {
-            var workingNumber = fives + tens - iCount;
-            return workingNumber;
-        }
-    }
+                if (romanNumeral.length > 1) {
+                    if (_(romanNumeral).endsWith("IV") || _(romanNumeral).endsWith("IX")) {
+                        var workingNumber = fives + tens - iCount;
+                        return workingNumber;
+                    }
+                }
 
-    ones = iCount;
-    result = fives + ones + tens;
+                ones = iCount;
+                result = ones + fives + tens + fifties + hundreds + fiveHundreds + thousands;
 
-    return result;
-}
+                return result;
+            }
         }
 
         module("When converting a roman numeral into an arabic numeral");
 
         test("should receive arabic numeral", function() {
-
-            //I V X L C D M
             equal(NumeralConverter.get_arabic_numeral("M"), 1000, "1000 when 'M' is passed in.");
-
             equal(NumeralConverter.get_arabic_numeral("D"), 500, "500 when 'D' is passed in.");
-
             equal(NumeralConverter.get_arabic_numeral("C"), 100, "100 when 'C' is passed in.");
-
             equal(NumeralConverter.get_arabic_numeral("L"), 50, "50 when 'L' is passed in.");
 
             equal(NumeralConverter.get_arabic_numeral("XXX"), 30, "30 when 'XXX' is passed in.");
