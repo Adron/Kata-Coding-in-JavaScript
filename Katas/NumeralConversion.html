@@ -17,6 +17,20 @@
     <script type="text/javascript">
 
         var NumeralConverter = {
+//            // Regex Example
+//            get_arabic_numeral : function (romanNumeral) {
+//                var romanNumeralString = romanNumeral.toUpperCase(),
+//                        validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/,
+//                        token = /[MDLV]|C[MD]?|X[CL]?|I[XV]?/g,
+//                        key = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1},
+//                        num = 0, m;
+//                if (!(romanNumeralString && validator.test(romanNumeralString)))
+//                    return false;
+//                while (m = token.exec(romanNumeralString))
+//                    num += key[m[0]];
+//                return num;
+//            }
+
             get_arabic_numeral : function (roman) {
                 var roman = roman.toUpperCase(),
                         lookup = {I:1,V:5,X:10,L:50,C:100,D:500,M:1000},
@@ -78,9 +92,7 @@
     </script>
 <body>
 <h1 id="qunit-header">Numeral Conversions</h1>
-
 <h2 id="qunit-banner"></h2>
-
 <div id="qunit-testrunner-toolbar"></div>
 <h2 id="qunit-userAgent"></h2>
 <ol id="qunit-tests"></ol>
